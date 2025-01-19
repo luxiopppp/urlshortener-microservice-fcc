@@ -30,6 +30,12 @@ app.post("/api/shorturl", (req, res) => {
   res.json({"original_url": url, "short_url": counter})
 })
 
+app.get("/api/shorturl/:id", (req, res) => {
+  const id = req.params.id;
+  const url = shortenedUrl[id];
+  res.redirect(url);
+})
+
 app.use('/public', express.static(`${process.cwd()}/public`));
 
 app.get('/', function(req, res) {
